@@ -30,7 +30,6 @@ class Piece:
         '''
         This method will turn this piece into a king.
         '''
-        print('making king')
         self.king = True
 
     def draw(self, win):

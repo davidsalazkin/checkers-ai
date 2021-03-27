@@ -2,6 +2,7 @@ import pygame
 import time
 from constants import BoardConstants, PygameConstants, ColorConstants
 from game.game import Game
+from minimax.algorithm import minimax
 
 window = pygame.display.set_mode((BoardConstants.WIDTH, BoardConstants.HEIGHT))
 pygame.display.set_caption('Minimax Checkers AI')
@@ -22,6 +23,10 @@ def run_game():
 
     while run:
         clock.tick(PygameConstants.FPS)
+
+        if game.turn == ColorConstants.WHITE:
+            value, new_board = minimax(game.get_board(), 3, ColorConstants.WHITE, game)
+            game.ai_move(new_board)
 
         if game.winner() != None:
             print(game.winner())
